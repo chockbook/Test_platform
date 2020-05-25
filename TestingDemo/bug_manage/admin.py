@@ -1,23 +1,29 @@
 from django.contrib import admin
-from api_test.models import Api_test
-from web_test.models import Web_test
+from api_test.models import Api_bug
+from web_test.models import Web_bug
 
 
-class BugAdmin(admin.ModelAdmin):
-    list_display = ["bug_api_test","bug_web_test"]
+@admin.register(Api_bug)
+class ApiBugAdmin(admin.ModelAdmin):
+    list_display = ["api_test_name","api_test_user",'api_test_bug']
 
-    
-    api_test_select = """
-                        select * from 'Api_test' where 'Api_test'.'api_test_bug' = '是'
-                        """
-    web_test_select = """
-                        select * from 'Web_test' where 'Web_test'.'web_test_bug' = '是'
-                        """
 
-    def queryset(self, request):
-        qs = super(BugAdmin, self).queryset(request)
-        qs = qs.extra(select={'bug_api_test': api_test_select,
-                              'bug_web_test': web_test_select})
+    def get_queryset(self,request):
+        
+        qs = super(ApiBugAdmin, self).get_queryset(request)
+        qs = qs.filter(api_test_bug="是")
         return qs
+
+@admin.register(Web_bug)
+class WebBugAdmin(admin.ModelAdmin):
+    list_display = ['web_test_name','web_test_user','web_test_bug']
+
+    def get_queryset(self,request):
+
+        qs = super(WebBugAdmin,self).get_queryset(request)
+        qs = qs.filter(web_test_bug="是")
+        return qs
+
+
 
 # Register your models here.

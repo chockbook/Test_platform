@@ -26,6 +26,13 @@ class Api_test(models.Model):
     def __str__(self):
         return self.api_test_name
 
+class Api_bug(Api_test):
+    class Meta():
+        verbose_name = "接口Bug"
+        verbose_name_plural = "接口Bug"
+        proxy = True
+        
+
 
 
 

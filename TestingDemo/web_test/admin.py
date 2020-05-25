@@ -2,11 +2,27 @@ from django.contrib import admin
 from .models import Web_test
 from django.contrib import messages
 from web_test.views import WebTest
+from product.models import Product
+from django.urls import reverse
+from django.utils.html import format_html
+
+
+#<a href="/admin/product/product/2/change/">2</a>
+
 
 @admin.register(Web_test)
 class Web_testAdmin(admin.ModelAdmin):
-    list_display = ["web_test_name","product","web_test_user","web_test_bug","create_time"]
+ 
+    list_display = ["web_test_name","get_product","web_test_user","web_test_bug","create_time"]
 
+    search_fields = ['web_test_name']
+
+    def get_product(self,obj):
+
+        html = format_html("<a href='/admin/product/product/{url}/change/'>{name}</a>", url=obj.product.id,name=obj.product.product_name)
+        return html
+    
+    get_product.short_description = "所属项目"
 
 
     actions = ['running']

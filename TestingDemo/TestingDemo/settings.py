@@ -164,9 +164,13 @@ SIMPLEUI_CONFIG = {
         'app': 'bug_manage',
         'name': 'Bug管理',    
         'models': [{
-            'name': 'Web测试',        
-            'url': 'web_test/web_test/'
-        }] 
+            'name': '接口测试Bug',        
+            'url': 'api_test/api_bug/'
+        },{
+            'name':'Web测试Bug',
+            'url':'web_test/web_bug/'
+        }
+        ] 
     
         
     },  {

@@ -3,11 +3,20 @@ from api_test.models import Api_test
 from django.shortcuts import render
 from django.contrib import messages
 from api_test.views import ApiTest
+from django.utils.html import format_html
 
 @admin.register(Api_test)
 class Api_testAdmin(admin.ModelAdmin):
-    list_display = ["api_test_name","product","api_test_user","api_test_bug","create_time"]
+    list_display = ["api_test_name","get_product","api_test_user","api_test_bug","create_time"]
 
+    search_fields = ['api_test_name']
+
+    def get_product(self,obj):
+
+        html = format_html("<a href='/admin/product/product/{url}/change/'>{name}</a>", url=obj.product.id,name=obj.product.product_name)
+        return html
+    
+    get_product.short_description = "所属项目"
 
     actions = ['running']
 

@@ -29,6 +29,11 @@ class Web_test(models.Model):
 
     def __str__(self):
         return self.web_test_name
+class Web_bug(Web_test):
+    class Meta():
+        verbose_name = "Web测试Bug"
+        verbose_name_plural = "Web测试Bug"
+        proxy = True
 
 
 
