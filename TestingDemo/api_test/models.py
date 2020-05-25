@@ -14,6 +14,7 @@ class Api_test(models.Model):
                     ("post","post"))
     api_test_method = models.CharField("请求方法",choices=REQUEST_METHOD,default="get",max_length=16,null=True)
     api_test_result = models.TextField("测试结果",blank=True,default=" ")
+    web_test_result1  = models.TextField("预期测试结果",blank=True,default=" ")
     Bug = (("null"," "),("是","是"),("否","否"))
     api_test_bug = models.CharField("是否有Bug",choices=Bug,default="null",max_length=4)
     create_time = models.DateTimeField("创建时间",auto_now=True)

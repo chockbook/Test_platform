@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'product',
     'api_test',
+    'web_test',
+    'bug_manage',
 ]
 
 MIDDLEWARE = [
@@ -132,7 +134,7 @@ SIMPLEUI_DEFAULT_THEME = 'admin.lte.css'
 
 SIMPLEUI_CONFIG = {
     'system_keep': False,
-    'menu_display': ['项目管理','接口用例管理','权限认证'],      # 开启排序和过滤功能, 不填此字段为默认排序和全部显示, 空列表[] 为全部不显示.
+    'menu_display': ['项目管理','接口用例管理','Web用例管理','Bug管理','权限认证'],      # 开启排序和过滤功能, 不填此字段为默认排序和全部显示, 空列表[] 为全部不显示.
     'dynamic': True,    # 设置是否开启动态菜单, 默认为False. 如果开启, 则会在每次用户登陆时动态展示菜单内容
     'menus': [{
         'app': 'product',
@@ -150,7 +152,24 @@ SIMPLEUI_CONFIG = {
             'url': 'api_test/api_test/'
         }]
         
+    },{
+        'app': 'web_test',
+        'name': 'Web用例管理',     
+        'models': [{
+            'name': 'Web测试',        
+            'url': 'web_test/web_test/'
+        }]
+        
     }, {
+        'app': 'bug_manage',
+        'name': 'Bug管理',    
+        'models': [{
+            'name': 'Web测试',        
+            'url': 'web_test/web_test/'
+        }] 
+    
+        
+    },  {
         'app': 'auth',
         'name': '权限认证',
       

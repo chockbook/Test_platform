@@ -6,7 +6,7 @@ from api_test.views import ApiTest
 
 @admin.register(Api_test)
 class Api_testAdmin(admin.ModelAdmin):
-    list_display = ["id","product","api_test_name","api_test_user","api_test_bug"]
+    list_display = ["api_test_name","product","api_test_user","api_test_bug","create_time"]
 
 
     actions = ['running']
